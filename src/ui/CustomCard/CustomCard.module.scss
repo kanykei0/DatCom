@@ -1,0 +1,86 @@
+.card {
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.country {
+  max-width: 610px;
+
+  .countryImage {
+    max-width: 261px;
+    height: 323px;
+
+    img {
+      border-radius: 14px;
+      object-fit: cover;
+    }
+  }
+
+  .infoBlock {
+    .countryDesc {
+      margin: 16px 0;
+      max-width: 289px;
+    }
+
+    .countryBtn {
+      margin: 12px 0;
+      transition: 0.3s;
+
+      &:hover {
+        color: var(--color-primary);
+        transition: 0.3s;
+
+        svg path {
+          stroke: var(--color-primary);
+        }
+      }
+    }
+  }
+}
+
+.students {
+  max-width: 400px;
+  flex-direction: column;
+
+  .studentsImage {
+    max-width: 360px;
+    height: 280px;
+
+    img {
+      border-radius: 14px;
+      object-fit: cover;
+    }
+  }
+
+  .infoBlock {
+    .studentsDesc {
+      margin: 16px 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      max-height: calc(3 * 1.5em);
+      line-height: 1.5em;
+    }
+
+    .studentsBtn {
+      margin: 12px 0;
+      text-align: end;
+      transition: 0.3s;
+
+      &:hover {
+        color: var(--color-primary);
+        transition: 0.3s;
+
+        svg path {
+          stroke: var(--color-primary);
+        }
+      }
+    }
+  }
+}
