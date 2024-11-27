@@ -6,3 +6,4 @@ export { Slider } from "./Slider/Slider";
 export { Services } from "./Services/Services";
 export { FAQBlock } from "./FAQBlock/FAQBlock";
 export { Contacts } from "./Contacts/Contacts";
+export { ReviewsBlock } from "./ReviewsBlock/ReviewsBlock";

@@ -8,6 +8,7 @@ import {
 } from "assets/index";
 import country from "assets/images/china.png";
 import student from "assets/images/student.jpeg";
+import student1 from "assets/images/student1.jpeg";
 
 export const PATHS = {
   notFound: "*",
@@ -178,4 +179,31 @@ export const ContactsData = [
   },
   { icon: <InstagramIcon />, title: "Инстаграм", text: "datcom_edu" },
   { icon: <TelegramIcon />, title: "Телеграм", text: "datcom_edu" },
+];
+
+export const ReviewsData = [
+  {
+    image: student1,
+    name: "Фио",
+    study: "Lorem ipsum dolor sit amet",
+    rating: 3,
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
+  },
+  {
+    image: student1,
+    name: "Фио",
+    study: "Lorem ipsum dolor sit amet",
+    rating: 5,
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
+  },
+  {
+    image: student1,
+    name: "Фио",
+    study: "Lorem ipsum dolor sit amet",
+    rating: 4,
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
+  },
 ];

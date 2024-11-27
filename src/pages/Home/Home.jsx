@@ -5,6 +5,7 @@ import {
   Services,
   Slider,
   Contacts,
+  ReviewsBlock,
 } from "modules/index";
 import { Container, CustomCard, Typography } from "ui/index";
 import { CountryArr, StudentsArr } from "utils/constants/Constants";
@@ -42,6 +43,9 @@ export const Home = () => {
             />
           )}
         />
+      </Container>
+      <ReviewsBlock />
+      <Container>
         <Typography variant="heading">часто задаваемые вопросы</Typography>
         <FAQBlock />
         <Typography variant="heading">Контакты</Typography>
