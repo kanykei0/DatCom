@@ -11,3 +11,4 @@ export { ClockIcon } from "./icons/ClockIcon";
 export { ArrowMore } from "./icons/ArrowMore";
 export { ArrowSlider } from "./icons/ArrowSlider";
 export { ServicesBlockIcon } from "./icons/ServicesBlockIcon";
+export { PlusIcon } from "./icons/PlusIcon";

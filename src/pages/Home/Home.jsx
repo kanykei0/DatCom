@@ -1,4 +1,4 @@
-import { AboutUs, Hero, Services, Slider } from "modules/index";
+import { AboutUs, Hero, FAQBlock, Services, Slider } from "modules/index";
 import { Container, CustomCard, Typography } from "ui/index";
 import { CountryArr, StudentsArr } from "utils/constants/Constants";
 
@@ -36,6 +36,7 @@ export const Home = () => {
           )}
         />
         <Typography variant="heading">часто задаваемые вопросы</Typography>
+        <FAQBlock />
       </Container>
     </div>
   );

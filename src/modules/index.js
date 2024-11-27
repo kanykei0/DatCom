@@ -4,3 +4,4 @@ export { Hero } from "./Hero/Hero";
 export { AboutUs } from "./AboutUs/AboutUs";
 export { Slider } from "./Slider/Slider";
 export { Services } from "./Services/Services";
+export { FAQBlock } from "./FAQBlock/FAQBlock";
