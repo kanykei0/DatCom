@@ -7,6 +7,7 @@ export const Button = ({
   size,
   className,
   rounded,
+  fullWidth,
   onClick,
   id,
 }) => {
@@ -14,6 +15,7 @@ export const Button = ({
     styles.button,
     styles[variant],
     styles[size],
+    fullWidth && styles.fullWidth,
     rounded && styles.rounded,
     className,
   ]

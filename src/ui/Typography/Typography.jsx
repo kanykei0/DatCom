@@ -1,4 +1,4 @@
-import { truncateString } from "utils/helpers/helpers";
+import { convertNewlinesToBreaks, truncateString } from "utils/helpers/helpers";
 import classes from "./Typography.module.scss";
 
 export const Typography = ({
@@ -36,7 +36,9 @@ export const Typography = ({
 
   return (
     <TagName id={id} className={classNameGenerated}>
-      {!truncate ? children : truncateString(children, truncate)}
+      {!truncate
+        ? convertNewlinesToBreaks(children)
+        : truncateString(children, truncate)}
     </TagName>
   );
 };

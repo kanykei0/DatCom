@@ -1,23 +1,46 @@
 import { ServicesData } from "utils/constants/Constants";
 import classes from "./Services.module.scss";
-import { Typography } from "ui/index";
+import { Button, Typography } from "ui/index";
+import { useState } from "react";
+import { ServicesBlockIcon } from "assets/index";
+import { useTranslation } from "react-i18next";
 
 export const Services = () => {
+  const { t } = useTranslation();
+  const [desc, setDesc] = useState(0);
+
   return (
     <div className={classes.block}>
       <div className={classes.block_top}>
         {ServicesData.map((title, key) => (
-          <div key={key}>
-            <Typography>{title.title}</Typography>
+          <div
+            className={`${classes.title} ${desc === key ? classes.active : ""}`}
+            key={key}
+            onClick={() => setDesc(key)}
+          >
+            <Typography weight="regular">{title.title}</Typography>
           </div>
         ))}
       </div>
       <div className={classes.block_bottom}>
         <div className={classes.left}>
-          <Typography>Что входит в услугу:</Typography>
-          <Typography></Typography>
+          <Typography
+            className={classes.left_title}
+            variant="h3"
+            weight="regular"
+          >
+            Что входит в услугу:
+          </Typography>
+          <Typography>{ServicesData[desc].description}</Typography>
         </div>
-        <div className={classes.right}></div>
+        <div className={classes.right}>
+          <ServicesBlockIcon />
+          <div className={classes.btnBlock}>
+            <Button variant="secondary" fullWidth size="default">
+              <Typography weight="regular">{t("header.btn")}</Typography>
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

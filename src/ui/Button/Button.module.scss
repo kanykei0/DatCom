@@ -4,6 +4,12 @@
   transition: background-color 0.3s ease;
   border-radius: 14px;
   font-family: inherit;
+
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-hover);
+    border-color: var(--color-hover);
+  }
 }
 
 .primary {
@@ -12,17 +18,19 @@
 }
 
 .secondary {
-  color: var(--text-blue);
+  color: var(--color-primary);
   background-color: var(--color-white);
-
-  &:hover {
-    color: var(--text-white);
-    background-color: var(--color-blue);
-  }
+  border-radius: 12px;
+  border: 2px solid var(--color-primary);
+  background: var(--color-white);
 }
 
 .rounded {
   border-radius: 50%;
+}
+
+.default {
+  padding: 20px;
 }
 
 .long {
@@ -35,4 +43,8 @@
 
 .short {
   padding: 10px;
+}
+
+.fullWidth {
+  width: 100%;
 }

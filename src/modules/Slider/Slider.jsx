@@ -4,7 +4,7 @@ import { Navigation, Pagination, A11y } from "swiper/modules";
 import { ArrowSlider } from "assets/index";
 import { useRef, useState } from "react";
 
-export const Slider = ({ sliderList = [], renderSlide, amount = 2.2 }) => {
+export const Slider = ({ sliderList = [], renderSlide, amount = 1.8 }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -14,7 +14,7 @@ export const Slider = ({ sliderList = [], renderSlide, amount = 2.2 }) => {
     <Swiper
       className={classes.swiper}
       modules={[Navigation, Pagination, A11y]}
-      spaceBetween={50}
+      spaceBetween={10}
       slidesPerView={amount}
       navigation={{
         prevEl: prevRef.current,

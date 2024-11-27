@@ -6,40 +6,37 @@ export const Home = () => {
   return (
     <div>
       <Hero />
-      <AboutUs />
       <Container>
+        <AboutUs />
         <Typography variant="heading">страны</Typography>
-      </Container>
-      <Slider
-        sliderList={CountryArr}
-        renderSlide={(item) => (
-          <CustomCard
-            variant="country"
-            title={item.title}
-            image={item.image}
-            description={item.description}
-          />
-        )}
-      />
-      <Container>
+        <Slider
+          sliderList={CountryArr}
+          renderSlide={(item) => (
+            <CustomCard
+              variant="country"
+              title={item.title}
+              image={item.image}
+              description={item.description}
+            />
+          )}
+        />
         <Typography variant="heading">Услуги</Typography>
-      </Container>
-      <Services />
-      <Container>
+        <Services />
         <Typography variant="heading">поступившие студенты</Typography>
+        <Slider
+          amount={2.8}
+          sliderList={StudentsArr}
+          renderSlide={(item) => (
+            <CustomCard
+              variant="students"
+              title={item.title}
+              image={item.image}
+              description={item.description}
+            />
+          )}
+        />
+        <Typography variant="heading">часто задаваемые вопросы</Typography>
       </Container>
-      <Slider
-        amount={3.2}
-        sliderList={StudentsArr}
-        renderSlide={(item) => (
-          <CustomCard
-            variant="students"
-            title={item.title}
-            image={item.image}
-            description={item.description}
-          />
-        )}
-      />
     </div>
   );
 };
