@@ -1,4 +1,11 @@
-import { InstagramIcon, TelegramIcon, WhatsappIcon } from "assets/index";
+import {
+  ClockIcon,
+  InstagramIcon,
+  LocationIcon,
+  PhoneIcon,
+  TelegramIcon,
+  WhatsappIcon,
+} from "assets/index";
 import country from "assets/images/china.png";
 import student from "assets/images/student.jpeg";
 
@@ -151,4 +158,24 @@ export const OftenQuestionsData = [
     answer:
       "Обычно требуются аттестат или диплом, транскрипт оценок, мотивационное и рекомендательные письма, результаты тестов (например, IELTS или TOEFL) и, для творческих специальностей, портфолио.",
   },
+];
+
+export const ContactsData = [
+  {
+    icon: <ClockIcon />,
+    title: "Время работы",
+    text: "Пн-Сб: с 9:00 до 18:00",
+  },
+  {
+    icon: <LocationIcon />,
+    title: "Адрес",
+    text: "г. Бишкек, Ибраимова 103\r\n(Бизнес центр Виктори)",
+  },
+  {
+    icon: <PhoneIcon />,
+    title: "Телефон",
+    text: "+996 505‒28‒63‒85\r\n+996 505‒37‒13‒62\r\n+996 706-71‒88‒88",
+  },
+  { icon: <InstagramIcon />, title: "Инстаграм", text: "datcom_edu" },
+  { icon: <TelegramIcon />, title: "Телеграм", text: "datcom_edu" },
 ];

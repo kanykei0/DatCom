@@ -21,7 +21,9 @@ export const Footer = () => {
           </div>
           <div className={classes.workInfo}>
             <div className={classes.workInfo_wrap}>
-              <LocationIcon />
+              <div className={classes.locationIcon}>
+                <LocationIcon />
+              </div>
               <Typography
                 weight="regular"
                 className={classes.workInfo_wrap_text}
@@ -46,7 +48,9 @@ export const Footer = () => {
             </div>
           </div>
           <div className={classes.connection}>
-            <PhoneIcon />
+            <div className={classes.phoneIcon}>
+              <PhoneIcon />
+            </div>
             <div className={classes.connection_list}>
               {PhoneNumberData.map((item, key) => (
                 <a href="#" key={key} className={classes.phoneItem}>

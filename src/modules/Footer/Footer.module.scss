@@ -22,11 +22,18 @@
     .workInfo {
       &_wrap {
         display: flex;
+
         &_text {
           margin-left: 10px;
         }
         &_icon {
           margin: 5px 0 0 5px;
+          width: 23px;
+          height: 23px;
+        }
+        .locationIcon {
+          width: 30px;
+          height: 30px;
         }
       }
 
@@ -38,6 +45,10 @@
 
     .connection {
       display: flex;
+      .phoneIcon {
+        width: 24px;
+        height: 24px;
+      }
 
       &_list {
         margin-left: 10px;
