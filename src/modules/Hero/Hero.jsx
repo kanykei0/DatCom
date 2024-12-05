@@ -11,7 +11,7 @@ export const Hero = () => {
         <div className={classes.textBlock}>
           <Typography
             color="white"
-            weight="semiBold"
+            weight="bold"
             variant="h1"
             className={classes.title}
           >
