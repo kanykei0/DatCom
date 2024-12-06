@@ -10,6 +10,8 @@ import country from "assets/images/china.png";
 import student from "assets/images/student.jpeg";
 import student1 from "assets/images/student1.jpeg";
 
+export const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const PATHS = {
   notFound: "*",
   home: "/",
