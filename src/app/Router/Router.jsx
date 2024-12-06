@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../Layout/Layout";
 import { PATHS } from "utils/constants/Constants";
-import { Home, NotFound } from "pages/index";
+import { Home, NotFound, Reviews } from "pages/index";
+import { Form } from "pages/Form/Form";
 
 export const Router = createBrowserRouter([
   {
@@ -11,6 +12,14 @@ export const Router = createBrowserRouter([
       {
         path: PATHS.home,
         element: <Home />,
+      },
+      {
+        path: PATHS.reviews,
+        element: <Reviews />,
+      },
+      {
+        path: PATHS.form,
+        element: <Form />,
       },
       {
         path: PATHS.notFound,

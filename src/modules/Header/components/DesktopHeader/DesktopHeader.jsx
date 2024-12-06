@@ -2,7 +2,7 @@ import { Button, SocialMedia, Typography } from "ui/index";
 import classes from "./DesktopHeader.module.scss";
 import { SwitchLanguage } from "../SwitchLanguage/SwitchLanguage";
 import { DatComLogo } from "assets/index";
-import { navigationData } from "utils/constants/Constants";
+import { navigationData, PATHS } from "utils/constants/Constants";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -34,7 +34,9 @@ export const DesktopHeader = () => {
           </Link>
         ))}
         <Button size="medium">
-          <Typography weight="regular">{t("header.btn")}</Typography>
+          <Link to={PATHS.form}>
+            <Typography weight="regular">{t("header.btn")}</Typography>
+          </Link>
         </Button>
       </nav>
     </div>

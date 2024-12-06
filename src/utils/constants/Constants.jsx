@@ -15,6 +15,8 @@ export const BASE_URL = import.meta.env.VITE_API_URL;
 export const PATHS = {
   notFound: "*",
   home: "/",
+  reviews: "/reviews",
+  form: "/form",
 };
 
 export const SocialMediaData = [
@@ -28,7 +30,7 @@ export const navigationData = [
   { nav: "Страны", path: "/" },
   { nav: "Университеты", path: "/" },
   { nav: "Студенты", path: "/" },
-  { nav: "Отзывы", path: "/" },
+  { nav: "Отзывы", path: PATHS.reviews },
 ];
 
 export const PhoneNumberData = [
@@ -190,7 +192,7 @@ export const ReviewsData = [
     study: "Lorem ipsum dolor sit amet",
     rating: 3,
     review:
-      "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
+      "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
   },
   {
     image: student1,
@@ -208,4 +210,30 @@ export const ReviewsData = [
     review:
       "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
   },
+  {
+    image: student1,
+    name: "Фио",
+    study: "Lorem ipsum dolor sit amet",
+    rating: 4,
+    review:
+      "Lorem ipsum dolor sit amet consectetur. Dictum sed et sed ut at eget erat dui. Vel at fusce integer pretium. Vivamus ut est purus nunc pharetra semper. Viverra cursus elementum egestas mi in sed fames.",
+  },
+];
+
+export const optionsCountry = [
+  { value: "ru", label: "Россия" },
+  { value: "us", label: "США" },
+  { value: "cn", label: "Китай" },
+];
+
+export const optionsStudy = [
+  { value: "Computer Science", label: "Компьютерная инженерия" },
+  { value: "humanities", label: "Гуманитарные направления" },
+  { value: "Technical areas", label: "Технические направления" },
+];
+
+export const optionsSpeciality = [
+  { value: "Software engineer", label: "Программный инженер" },
+  { value: "Translator", label: "Переводчик" },
+  { value: "Инженер", label: "Инженер " },
 ];
