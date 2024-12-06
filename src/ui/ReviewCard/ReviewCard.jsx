@@ -2,6 +2,7 @@ import { StarEmptyIcon } from "assets/icons/StarEmptyIcon";
 import { Typography } from "..";
 import classes from "./ReviewCard.module.scss";
 import { StarIcon } from "assets/index";
+import studentImage from "assets/images/student1.jpeg";
 
 export const ReviewCard = ({ data, short }) => {
   const totalStars = 5;
@@ -10,14 +11,14 @@ export const ReviewCard = ({ data, short }) => {
     <div className={`${classes.block} ${short ? classes.short : ""}`}>
       <div className={classes.block_top}>
         <div className={classes.studentPhoto}>
-          <img src={data.image} alt={data.name} />
+          <img src={studentImage} alt={data.name} />
         </div>
         <div className={classes.studentInfo}>
           <Typography variant="h4" weight="regular">
-            {data.name}
+            {data.full_name}
           </Typography>
           <Typography className={classes.studentInfo_study}>
-            {data.study}
+            {data.university}
           </Typography>
           <div className={classes.rate}>
             {Array.from({ length: totalStars }).map((_, index) =>
@@ -35,7 +36,7 @@ export const ReviewCard = ({ data, short }) => {
         </div>
       </div>
       <div className={classes.block_bottom}>
-        <Typography variant="h6">{data.review}</Typography>
+        <Typography variant="h6">{data.text}</Typography>
       </div>
     </div>
   );

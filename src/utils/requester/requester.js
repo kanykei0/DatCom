@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../constants/constans";
+import { BASE_URL } from "utils/constants/Constants";
 import { create } from "zustand";
 
 export const requester = axios.create({
