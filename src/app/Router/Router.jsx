@@ -4,6 +4,8 @@ import { PATHS } from "utils/constants/Constants";
 import { Home, NotFound, Reviews } from "pages/index";
 import { Form } from "pages/Form/Form";
 import { Students } from "pages/Students/Students";
+import { Universities } from "pages/Universities/Universities";
+import { DetailedUniversity } from "pages/Universities/components/DetailedUniversity/DetailedUniversity";
 
 export const Router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ export const Router = createBrowserRouter([
       {
         path: PATHS.students,
         element: <Students />,
+      },
+      {
+        path: PATHS.universities,
+        element: <Universities />,
+      },
+      {
+        path: PATHS.detailedUniversity,
+        element: <DetailedUniversity />,
       },
       {
         path: PATHS.notFound,

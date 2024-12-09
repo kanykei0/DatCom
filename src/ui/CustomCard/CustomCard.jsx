@@ -18,7 +18,7 @@ const cardVariant = {
   },
 };
 
-export const CustomCard = ({ variant, image, title, description }) => {
+export const CustomCard = ({ variant, image, title, description, link }) => {
   const cardConfig = cardVariant[variant];
 
   if (!cardConfig) {
@@ -37,7 +37,7 @@ export const CustomCard = ({ variant, image, title, description }) => {
           {title}
         </Typography>
         <Typography className={desc}>{description}</Typography>
-        <Link to="/">
+        <Link to={link}>
           <Typography weight="regular" className={btn}>
             Подробнее <ArrowMore />
           </Typography>

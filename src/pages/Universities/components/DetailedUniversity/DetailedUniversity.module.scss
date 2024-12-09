@@ -1,0 +1,37 @@
+.wrapper {
+  margin-top: 32px;
+
+  .imageWrapper {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 20px;
+
+    img {
+      max-width: 700px;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+  }
+
+  .articleBlock {
+    min-width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+
+    .secondaryTitle {
+      margin-bottom: 24px;
+    }
+  }
+
+  .description {
+    padding: 0 105px;
+  }
+
+  .students {
+    margin-top: 120px;
+  }
+}

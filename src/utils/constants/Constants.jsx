@@ -18,6 +18,8 @@ export const PATHS = {
   reviews: "/reviews",
   form: "/form",
   students: "/students",
+  universities: "/universities",
+  detailedUniversity: "/universities/:id",
 };
 
 export const SocialMediaData = [
@@ -29,7 +31,7 @@ export const SocialMediaData = [
 export const navigationData = [
   { nav: "Услуги", path: "/" },
   { nav: "Страны", path: "/" },
-  { nav: "Университеты", path: "/" },
+  { nav: "Университеты", path: PATHS.universities },
   { nav: "Студенты", path: PATHS.students },
   { nav: "Отзывы", path: PATHS.reviews },
 ];
