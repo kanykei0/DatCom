@@ -17,6 +17,7 @@ export const PATHS = {
   home: "/",
   reviews: "/reviews",
   form: "/form",
+  students: "/students",
 };
 
 export const SocialMediaData = [
@@ -29,7 +30,7 @@ export const navigationData = [
   { nav: "Услуги", path: "/" },
   { nav: "Страны", path: "/" },
   { nav: "Университеты", path: "/" },
-  { nav: "Студенты", path: "/" },
+  { nav: "Студенты", path: PATHS.students },
   { nav: "Отзывы", path: PATHS.reviews },
 ];
 

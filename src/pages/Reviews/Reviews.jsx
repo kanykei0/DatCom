@@ -7,11 +7,12 @@ import { PaginationComponent } from "modules/PaginationComponent/PaginationCompo
 
 export const Reviews = () => {
   const [offset, setOffset] = useState(0);
+  const limit = 6;
 
-  const { reviews, count } = useReviewsStore(offset);
+  const { reviews, count } = useReviewsStore(offset, limit);
 
   const onChange = (_, page) => {
-    setOffset((page - 1) * 6);
+    setOffset((page - 1) * limit);
   };
 
   return (
