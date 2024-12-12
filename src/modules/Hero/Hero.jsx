@@ -1,6 +1,8 @@
 import { Button, Container, Typography } from "ui/index";
 import classes from "./Hero.module.scss";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { PATHS } from "utils/constants/Constants";
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -21,7 +23,9 @@ export const Hero = () => {
             Помощь студентам в достижении их образовательных целей за рубежом
           </Typography>
           <Button size="medium">
-            <Typography>{t("header.btn")}</Typography>
+            <Link to={PATHS.form}>
+              <Typography>{t("header.btn")}</Typography>
+            </Link>
           </Button>
         </div>
       </Container>

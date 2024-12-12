@@ -6,11 +6,31 @@ import {
   Slider,
   Contacts,
   ReviewsBlock,
+  ModalComponent,
 } from "modules/index";
+import { useStudentsStore } from "pages/Students/store/useStudentsStore";
+import { useState } from "react";
 import { Container, CustomCard, Typography } from "ui/index";
 import { CountryArr, StudentsArr } from "utils/constants/Constants";
 
 export const Home = () => {
+  const [offset, setOffset] = useState(0);
+  const limit = 6;
+
+  const { students, count } = useStudentsStore(offset, limit);
+
+  const [open, setOpen] = useState(false);
+  const [student, setStudent] = useState({});
+
+  const openModal = (student) => {
+    setOpen(true);
+    setStudent(student);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Hero />
@@ -33,13 +53,14 @@ export const Home = () => {
         <Typography variant="heading">поступившие студенты</Typography>
         <Slider
           amount={2.8}
-          sliderList={StudentsArr}
+          sliderList={students}
           renderSlide={(item) => (
             <CustomCard
               variant="students"
               title={item.title}
               image={item.image}
               description={item.description}
+              modal={() => openModal(item)}
             />
           )}
         />
@@ -51,6 +72,8 @@ export const Home = () => {
         <Typography variant="heading">Контакты</Typography>
         <Contacts />
       </Container>
+
+      <ModalComponent open={open} closeModal={closeModal} student={student} />
     </div>
   );
 };
