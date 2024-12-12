@@ -1,9 +1,10 @@
-import { ServicesData } from "utils/constants/Constants";
+import { PATHS, ServicesData } from "utils/constants/Constants";
 import classes from "./Services.module.scss";
 import { Button, Typography } from "ui/index";
 import { useState } from "react";
 import { ServicesBlockIcon } from "assets/index";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export const Services = () => {
   const { t } = useTranslation();
@@ -37,7 +38,9 @@ export const Services = () => {
           <ServicesBlockIcon />
           <div className={classes.btnBlock}>
             <Button variant="secondary" fullWidth size="default">
-              <Typography weight="regular">{t("header.btn")}</Typography>
+              <Link to={PATHS.form}>
+                <Typography weight="regular">{t("header.btn")}</Typography>
+              </Link>
             </Button>
           </div>
         </div>

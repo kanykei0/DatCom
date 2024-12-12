@@ -11,7 +11,7 @@ export const ReviewCard = ({ data, short }) => {
     <div className={`${classes.block} ${short ? classes.short : ""}`}>
       <div className={classes.block_top}>
         <div className={classes.studentPhoto}>
-          <img src={studentImage} alt={data.name} />
+          <img src={data.image} alt={data.name} />
         </div>
         <div className={classes.studentInfo}>
           <Typography variant="h4" weight="regular">

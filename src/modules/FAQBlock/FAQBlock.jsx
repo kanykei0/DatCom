@@ -1,11 +1,14 @@
 import { useState } from "react";
 import classes from "./FAQBlock.module.scss";
 import { Typography } from "ui/index";
-import { OftenQuestionsData } from "utils/constants/Constants";
 import { PlusIcon } from "assets/index";
+import { useFAQBlockStore } from "./store/useFAQBlockStore";
+import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 
 export const FAQBlock = () => {
   const [selected, setSelected] = useState(null);
+
+  const { questions, loading } = useFAQBlockStore();
 
   const toggle = (index) => {
     if (selected === index) {
@@ -16,32 +19,45 @@ export const FAQBlock = () => {
 
   return (
     <div className={classes.list}>
-      {OftenQuestionsData.map((data, key) => (
-        <div key={key} className={classes.accordion}>
-          <div className={classes.block}>
-            <div className={classes.question} onClick={() => toggle(key)}>
-              <Typography variant="h4" weight="bold">
-                {data.question}
-              </Typography>
-              <div
-                className={`${classes.icon} ${
-                  selected === key ? classes.open : ""
-                }`}
-              >
-                <PlusIcon />
-              </div>
-            </div>
-          </div>
-          <div
-            className={
-              selected === key
-                ? `${classes.answer} ${classes.show}`
-                : `${classes.answer}`
-            }
+      {questions.map((data, key) => (
+        <Accordion
+          square
+          key={key}
+          disableGutters
+          sx={{
+            border: "none",
+            outline: "none",
+            boxShadow: "none",
+            mb: 3,
+            boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.25)",
+            borderRadius: "20px",
+            background: "var(--color-white)",
+            "&:before": {
+              display: "none",
+            },
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<PlusIcon />}
+            sx={{
+              m: 0,
+              p: 2,
+              "& .MuiAccordionSummary-content": {
+                margin: 0,
+                "&.Mui-expanded": {
+                  margin: 0,
+                },
+              },
+            }}
           >
-            <Typography className={classes.spantext}>{data.answer}</Typography>
-          </div>
-        </div>
+            <Typography variant="h4" weight="bold">
+              {data.question}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography variant="h5">{data.answer}</Typography>
+          </AccordionDetails>
+        </Accordion>
       ))}
     </div>
   );

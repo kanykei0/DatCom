@@ -3,19 +3,23 @@ import classes from "./Universities.module.scss";
 import { Typography, Container, CustomCard } from "ui/index";
 import { useUniversitiesStore } from "./store/useUniversitiesStore";
 import { PaginationComponent } from "modules/PaginationComponent/PaginationComponent";
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, MenuItem, TextField } from "@mui/material";
 import { PhoneIcon } from "assets/index";
 
 export const Universities = () => {
   const [offset, setOffset] = useState(0);
   const [state, setState] = useState({
     search: "",
-    country: [],
+    country: "",
     programm: [],
   });
   const limit = 12;
 
-  const { universities, count } = useUniversitiesStore(offset, limit, state);
+  const { universities, countryList, count } = useUniversitiesStore(
+    offset,
+    limit,
+    state
+  );
 
   const onChange = (_, page) => {
     setOffset((page - 1) * limit);
@@ -75,6 +79,40 @@ export const Universities = () => {
               },
             }}
           />
+
+          <TextField
+            name="country"
+            label="Страна"
+            select
+            defaultValue=""
+            value={state.country}
+            onChange={handleInputChange}
+            sx={{
+              width: "200px",
+              "& .MuiOutlinedInput-root": {
+                height: "45px",
+                borderRadius: "8px",
+                background: "var(--color-white)",
+                outline: "none",
+              },
+              "& .MuiOutlinedInput-input": {
+                padding: "10px",
+              },
+              "& .MuiInputLabel-root": {
+                lineHeight: "1.2",
+                top: "-4px",
+              },
+              "& .MuiInputLabel-shrink": {
+                top: "0px",
+              },
+            }}
+          >
+            {countryList.map((option) => (
+              <MenuItem key={option.id} value={option.id}>
+                {option.title}
+              </MenuItem>
+            ))}
+          </TextField>
         </div>
         <div className={classes.cardWrapper}>
           {universities.map((item, key) => (

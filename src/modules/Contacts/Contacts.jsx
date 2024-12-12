@@ -1,28 +1,90 @@
-import { ContactsData } from "utils/constants/Constants";
 import classes from "./Contacts.module.scss";
 import { Typography } from "ui/index";
+import { useContactsStore } from "./store/useContactsStore";
+import {
+  ClockIcon,
+  InstagramIcon,
+  LocationIcon,
+  PhoneIcon,
+  TelegramIcon,
+} from "assets/index";
 
 export const Contacts = () => {
+  const { contacts, loading } = useContactsStore();
+  const { shift, address, phoneNumber, instagram, telegram } = contacts;
+
   return (
     <div className={classes.block}>
       <div className={classes.block_left}>
-        {ContactsData.map((item, key) => (
-          <div key={key} className={classes.block_left_info}>
-            <div
-              className={`${classes.iconBlock} ${
-                key === 0 || key === 2 ? classes.changeIcon : ""
-              }`}
-            >
-              {item.icon}
-            </div>
-            <div className={classes.infoBlock}>
-              <Typography variant="h4" color="white" weight="bold">
-                {item.title}
-              </Typography>
-              <Typography color="white">{item.text}</Typography>
-            </div>
+        <div className={classes.block_left_info}>
+          <div className={`${classes.iconBlock} ${classes.changeIcon} `}>
+            <ClockIcon />
           </div>
-        ))}
+          <div className={classes.infoBlock}>
+            <Typography variant="h4" color="white" weight="bold">
+              Время работы:
+            </Typography>
+            <Typography color="white">{shift}</Typography>
+          </div>
+        </div>
+        <div className={classes.block_left_info}>
+          <div className={`${classes.iconBlock} ${classes.changeIcon} `}>
+            <LocationIcon />
+          </div>
+          <div className={classes.infoBlock}>
+            <Typography variant="h4" color="white" weight="bold">
+              Адрес:
+            </Typography>
+            <Typography color="white">{contacts.address}</Typography>
+          </div>
+        </div>
+        <div className={classes.block_left_info}>
+          <div className={`${classes.iconBlock} ${classes.changeIcon} `}>
+            <PhoneIcon />
+          </div>
+          <div className={classes.infoBlock}>
+            <Typography variant="h4" color="white" weight="bold">
+              Телефон:
+            </Typography>
+            {contacts.phonenumber &&
+              contacts.phonenumber.length > 0 &&
+              contacts.phonenumber.map((number, key) => (
+                <Typography color="white" key={key}>
+                  {number.phonenumber}
+                </Typography>
+              ))}
+          </div>
+        </div>
+        <div className={classes.block_left_info}>
+          <div className={`${classes.iconBlock} ${classes.changeIcon} `}>
+            <InstagramIcon />
+          </div>
+          <div className={classes.infoBlock}>
+            <Typography variant="h4" color="white" weight="bold">
+              Инстаграм:
+            </Typography>
+            <Typography color="white">
+              <a href={instagram} target="_blank">
+                datcom_edu
+              </a>
+            </Typography>
+          </div>
+        </div>
+        <div className={classes.block_left_info}>
+          <div className={`${classes.iconBlock} ${classes.changeIcon} `}>
+            <TelegramIcon />
+          </div>
+          <div className={classes.infoBlock}>
+            <Typography variant="h4" color="white" weight="bold">
+              Телеграм:
+            </Typography>
+            <Typography color="white">
+              <a href={telegram} target="_blank">
+                datcom_edu
+              </a>
+            </Typography>
+          </div>
+        </div>
       </div>
       <div className={classes.block_right}>
         <iframe

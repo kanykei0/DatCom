@@ -230,9 +230,9 @@ export const optionsCountry = [
 ];
 
 export const optionsStudy = [
-  { value: "Computer Science", label: "Компьютерная инженерия" },
-  { value: "humanities", label: "Гуманитарные направления" },
-  { value: "Technical areas", label: "Технические направления" },
+  { value: "bakalavriat", label: "Бакалавриат" },
+  { value: "magistratura", label: "Магистратура" },
+  { value: "aspirantura", label: "Аспирантура" },
 ];
 
 export const optionsSpeciality = [

@@ -9,6 +9,7 @@ import {
 } from "utils/constants/Constants";
 import { TextField, MenuItem } from "@mui/material";
 import { IMaskInput } from "react-imask";
+import { useFormStore } from "./store/useFormStore";
 
 export const Form = () => {
   const [state, setState] = useState({
@@ -18,6 +19,9 @@ export const Form = () => {
     study: "",
     speciality: "",
   });
+
+  const { submitForm, countryList, success, resetSuccess, loading } =
+    useFormStore();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,11 +34,8 @@ export const Form = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    const formatState = {
-      ...state,
-      number: "996" + state.number,
-    };
-    console.log("Form Submitted", formatState);
+
+    submitForm(state);
   };
 
   const sharedTextFieldStyles = {
@@ -60,7 +61,7 @@ export const Form = () => {
   return (
     <Container>
       <div className={classes.blockWrapper}>
-        <div className={classes.formBlock}>
+        <div className={`${classes.formBlock} ${classes.round}`}>
           <Typography variant="h1" weight="bold" upp="upp">
             оставить заявку
           </Typography>
@@ -112,9 +113,9 @@ export const Form = () => {
                 sx={sharedTextFieldStyles}
                 onChange={handleInputChange}
               >
-                {optionsCountry.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                {countryList.map((option) => (
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.title}
                   </MenuItem>
                 ))}
               </TextField>
