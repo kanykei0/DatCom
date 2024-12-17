@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useApiStore } from "utils/requester/requester";
 
-export const useDetailedUniversityStore = (id) => {
+export const useCountryDetailedStore = (id) => {
   const [university, setUniversity] = useState({});
-  const [students, setStudents] = useState([]);
+  const [country, setCountry] = useState({});
   const { fetchData, loading } = useApiStore();
 
   useEffect(() => {
@@ -11,29 +11,29 @@ export const useDetailedUniversityStore = (id) => {
 
     const fetchUniversity = async () => {
       try {
-        const response = await fetchData(`media/university/`);
+        const response = await fetchData(`media/university/?country=${id}`);
         setUniversity(response);
       } catch (error) {
         throw new Error(error);
       }
     };
 
-    const fetchStudents = async () => {
+    const fetchCountry = async () => {
       try {
-        const response = await fetchData(`media/country/${id}`);
-        setStudents(response.results);
+        const response = await fetchData(`media/country/${id}/`);
+        setCountry(response.results);
       } catch (error) {
         throw new Error(error);
       }
     };
 
     fetchUniversity();
-    fetchStudents();
+    fetchCountry();
   }, [id, fetchData]);
 
   return {
     university,
-    students,
+    country,
     loading,
   };
 };

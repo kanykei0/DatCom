@@ -20,6 +20,8 @@ export const PATHS = {
   students: "/students",
   universities: "/universities",
   detailedUniversity: "/universities/:id",
+  countries: "/countries",
+  detailedCountry: "/countries/:id",
 };
 
 export const SocialMediaData = [
@@ -30,7 +32,7 @@ export const SocialMediaData = [
 
 export const navigationData = [
   { nav: "Услуги", path: "/" },
-  { nav: "Страны", path: "/" },
+  { nav: "Страны", path: PATHS.countries },
   { nav: "Университеты", path: PATHS.universities },
   { nav: "Студенты", path: PATHS.students },
   { nav: "Отзывы", path: PATHS.reviews },
