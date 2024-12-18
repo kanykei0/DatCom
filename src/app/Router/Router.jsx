@@ -4,14 +4,14 @@ import { PATHS } from "utils/constants/Constants";
 import {
   Countries,
   CountryDetailed,
+  DetailedUniversity,
+  Form,
   Home,
   NotFound,
   Reviews,
+  Students,
+  Universities,
 } from "pages/index";
-import { Form } from "pages/Form/Form";
-import { Students } from "pages/Students/Students";
-import { Universities } from "pages/Universities/Universities";
-import { DetailedUniversity } from "pages/Universities/components/DetailedUniversity/DetailedUniversity";
 
 export const Router = createBrowserRouter([
   {
