@@ -23,6 +23,10 @@ export const Router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: PATHS.services,
+        element: <Home />,
+      },
+      {
         path: PATHS.reviews,
         element: <Reviews />,
       },

@@ -15,6 +15,7 @@ export const BASE_URL = import.meta.env.VITE_API_URL;
 export const PATHS = {
   notFound: "*",
   home: "/",
+  services: "/:services",
   reviews: "/reviews",
   form: "/form",
   students: "/students",
@@ -31,7 +32,7 @@ export const SocialMediaData = [
 ];
 
 export const navigationData = [
-  { nav: "Услуги", path: "/" },
+  { nav: "Услуги", path: "/services" },
   { nav: "Страны", path: PATHS.countries },
   { nav: "Университеты", path: PATHS.universities },
   { nav: "Студенты", path: PATHS.students },

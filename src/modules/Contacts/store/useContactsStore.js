@@ -10,7 +10,6 @@ export const useContactsStore = () => {
       try {
         const response = await fetchData(`main-info/contacts/`);
         setContacts(response[0]);
-        console.log(response);
       } catch (error) {
         throw new Error(error);
       }
