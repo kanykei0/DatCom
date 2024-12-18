@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useApiStore } from "utils/requester/requester";
 
-export const useReviewsBlockStore = (offset = 0, limit = 3) => {
+export const useReviewsBlockStore = ({ offset = 0, limit = 3 }) => {
   const [reviews, setReviews] = useState([]);
   const { fetchData, loading } = useApiStore();
 

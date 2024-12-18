@@ -9,6 +9,7 @@ export const useUniversitiesStore = (
 ) => {
   const [universities, setUniversities] = useState([]);
   const [countryList, setCountryList] = useState([]);
+  const [programmList, setProgrammList] = useState([]);
   const [count, setCount] = useState(0);
   const { fetchData, loading } = useApiStore();
 
@@ -25,6 +26,10 @@ export const useUniversitiesStore = (
           url += `&country=${encodeURIComponent(search.country)}`;
         }
 
+        if (search.programm) {
+          url += `&program=${encodeURIComponent(search.programm)}`;
+        }
+
         const response = await fetchData(url);
         setUniversities(response.results);
         setCount(Math.ceil(response.count / limit));
@@ -37,7 +42,15 @@ export const useUniversitiesStore = (
       try {
         const response = await fetchData(`media/country/`);
         setCountryList(response.results);
-        console.log(response.results);
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
+    const fetchProgramms = async () => {
+      try {
+        const response = await fetchData(`media/program/`);
+        setProgrammList(response.results);
       } catch (error) {
         throw new Error(error);
       }
@@ -46,11 +59,14 @@ export const useUniversitiesStore = (
     fetchUniversities();
 
     fetchCountries();
+
+    fetchProgramms();
   }, [offset, search, fetchData]);
 
   return {
     universities,
     countryList,
+    programmList,
     count,
     loading,
   };

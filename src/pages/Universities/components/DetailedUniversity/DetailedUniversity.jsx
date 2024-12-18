@@ -4,10 +4,13 @@ import { useDetailedUniversityStore } from "./store/useDetailedUniversityStore";
 import { useParams } from "react-router-dom";
 import { Slider, ReviewsBlock, ModalComponent } from "modules/index";
 import { useState } from "react";
+import { Grid2 as Grid } from "@mui/material";
+import { useMediaQuery } from "utils/helpers/useMedia";
 
 export const DetailedUniversity = () => {
   const { id } = useParams();
   const { university, students } = useDetailedUniversityStore(id);
+  const isMobile = useMediaQuery("(max-width: 900px)");
 
   const [open, setOpen] = useState(false);
   const [student, setStudent] = useState({});
@@ -25,9 +28,16 @@ export const DetailedUniversity = () => {
     <div className={classes.wrapper}>
       <Container>
         <Typography variant="heading">{university.title}</Typography>
-        <div className={classes.imageWrapper}>
-          <img src={university.image} alt={university.title} />
-          <div className={classes.articleBlock}>
+
+        <Grid
+          container
+          spacing={3}
+          sx={{ marginTop: "20px", marginBottom: "20px" }}
+        >
+          <Grid size={{ xs: 12, md: 7 }} className={classes.imageWrapper}>
+            <img src={university.image} alt={university.title} />
+          </Grid>
+          <Grid size={{ xs: 12, md: 5 }} className={classes.articleBlock}>
             <Typography
               variant="h3"
               weight="bold"
@@ -39,8 +49,8 @@ export const DetailedUniversity = () => {
             <Typography variant="h5">
               {university.secondary_description}
             </Typography>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
 
         <div className={classes.description}>
           <Typography variant="h5">{university.description}</Typography>
@@ -51,7 +61,7 @@ export const DetailedUniversity = () => {
 
           <div className={classes.studentsSlider}>
             <Slider
-              amount={2.8}
+              amount={isMobile ? 2 : 2.8}
               sliderList={students}
               renderSlide={(item) => (
                 <CustomCard

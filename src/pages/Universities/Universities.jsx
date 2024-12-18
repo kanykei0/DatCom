@@ -4,22 +4,19 @@ import { Typography, Container, CustomCard } from "ui/index";
 import { useUniversitiesStore } from "./store/useUniversitiesStore";
 import { PaginationComponent } from "modules/PaginationComponent/PaginationComponent";
 import { InputAdornment, MenuItem, TextField } from "@mui/material";
-import { PhoneIcon } from "assets/index";
+import { Search } from "assets/index";
 
 export const Universities = () => {
   const [offset, setOffset] = useState(0);
   const [state, setState] = useState({
     search: "",
     country: "",
-    programm: [],
+    programm: "",
   });
   const limit = 12;
 
-  const { universities, countryList, count } = useUniversitiesStore(
-    offset,
-    limit,
-    state
-  );
+  const { universities, countryList, programmList, count } =
+    useUniversitiesStore(offset, limit, state);
 
   const onChange = (_, page) => {
     setOffset((page - 1) * limit);
@@ -71,8 +68,7 @@ export const Universities = () => {
                 endAdornment: (
                   <InputAdornment position="end">
                     <div className={classes.icon}>
-                      {/* NADO BUDET CHANGE ICON NA SEARCH YA CHOTO NE NASHEL */}
-                      <PhoneIcon />
+                      <Search />
                     </div>
                   </InputAdornment>
                 ),
@@ -88,7 +84,7 @@ export const Universities = () => {
             value={state.country}
             onChange={handleInputChange}
             sx={{
-              width: "200px",
+              width: "120px",
               "& .MuiOutlinedInput-root": {
                 height: "45px",
                 borderRadius: "8px",
@@ -108,6 +104,40 @@ export const Universities = () => {
             }}
           >
             {countryList.map((option) => (
+              <MenuItem key={option.id} value={option.id}>
+                {option.title}
+              </MenuItem>
+            ))}
+          </TextField>
+
+          <TextField
+            name="programm"
+            label="Программа обучения"
+            select
+            defaultValue=""
+            value={state.programm}
+            onChange={handleInputChange}
+            sx={{
+              width: "230px",
+              "& .MuiOutlinedInput-root": {
+                height: "45px",
+                borderRadius: "8px",
+                background: "var(--color-white)",
+                outline: "none",
+              },
+              "& .MuiOutlinedInput-input": {
+                padding: "10px",
+              },
+              "& .MuiInputLabel-root": {
+                lineHeight: "1.2",
+                top: "-4px",
+              },
+              "& .MuiInputLabel-shrink": {
+                top: "0px",
+              },
+            }}
+          >
+            {programmList.map((option) => (
               <MenuItem key={option.id} value={option.id}>
                 {option.title}
               </MenuItem>
