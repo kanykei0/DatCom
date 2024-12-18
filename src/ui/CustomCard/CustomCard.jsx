@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Typography } from "..";
+import { Button, Typography } from "..";
 import classes from "./CustomCard.module.scss";
 import { ArrowMore } from "assets/index";
 
@@ -18,7 +18,14 @@ const cardVariant = {
   },
 };
 
-export const CustomCard = ({ variant, image, title, description, link }) => {
+export const CustomCard = ({
+  variant,
+  image,
+  title,
+  description,
+  link,
+  modal,
+}) => {
   const cardConfig = cardVariant[variant];
 
   if (!cardConfig) {
@@ -37,11 +44,17 @@ export const CustomCard = ({ variant, image, title, description, link }) => {
           {title}
         </Typography>
         <Typography className={desc}>{description}</Typography>
-        <Link to={link}>
-          <Typography weight="regular" className={btn}>
+        {modal ? (
+          <Typography weight="regular" pointer="pointer" className={btn} onClick={modal}>
             Подробнее <ArrowMore />
           </Typography>
-        </Link>
+        ) : (
+          <Link to={link}>
+            <Typography weight="regular" pointer="pointer" className={btn}>
+              Подробнее <ArrowMore />
+            </Typography>
+          </Link>
+        )}
       </div>
     </div>
   );

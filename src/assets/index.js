@@ -13,3 +13,4 @@ export { ArrowSlider } from "./icons/ArrowSlider";
 export { ServicesBlockIcon } from "./icons/ServicesBlockIcon";
 export { PlusIcon } from "./icons/PlusIcon";
 export { StarIcon } from "./icons/StarIcon";
+export { CloseIcon } from "./icons/CloseIcon";

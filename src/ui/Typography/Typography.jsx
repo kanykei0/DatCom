@@ -11,6 +11,8 @@ export const Typography = ({
   color = "",
   truncate = 0,
   id,
+  onClick,
+  pointer = "",
 }) => {
   const Tags = {
     h1: "h1",
@@ -26,6 +28,7 @@ export const Typography = ({
     classes[upp],
     classes[color],
     classes[font],
+    classes[pointer],
     className,
   ]
     .filter(Boolean)
@@ -35,7 +38,7 @@ export const Typography = ({
   const TagName = Tags[variant] || "p";
 
   return (
-    <TagName id={id} className={classNameGenerated}>
+    <TagName id={id} className={classNameGenerated} onClick={onClick}>
       {!truncate
         ? convertNewlinesToBreaks(children)
         : truncateString(children, truncate)}
