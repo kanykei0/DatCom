@@ -10,8 +10,8 @@ import {
 } from "assets/index";
 
 export const Contacts = () => {
-  const { contacts, loading } = useContactsStore();
-  const { shift, address, phoneNumber, instagram, telegram } = contacts;
+  const { contacts } = useContactsStore();
+  const { shift, address, phoneNumber, instagram, telegram } = contacts || {};
 
   return (
     <div className={classes.block}>
@@ -24,7 +24,9 @@ export const Contacts = () => {
             <Typography variant="h4" color="white" weight="bold">
               Время работы:
             </Typography>
-            <Typography color="white">{shift}</Typography>
+            <Typography color="white">
+              {shift ? shift : "No shift provided"}
+            </Typography>
           </div>
         </div>
         <div className={classes.block_left_info}>
@@ -35,7 +37,9 @@ export const Contacts = () => {
             <Typography variant="h4" color="white" weight="bold">
               Адрес:
             </Typography>
-            <Typography color="white">{contacts.address}</Typography>
+            <Typography color="white">
+              {address ? address : "No address provided"}
+            </Typography>
           </div>
         </div>
         <div className={classes.block_left_info}>
@@ -46,9 +50,9 @@ export const Contacts = () => {
             <Typography variant="h4" color="white" weight="bold">
               Телефон:
             </Typography>
-            {contacts.phonenumber &&
-              contacts.phonenumber.length > 0 &&
-              contacts.phonenumber.map((number, key) => (
+            {phoneNumber &&
+              phoneNumber.length > 0 &&
+              phoneNumber.map((number, key) => (
                 <Typography color="white" key={key}>
                   {number.phonenumber}
                 </Typography>

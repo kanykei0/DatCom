@@ -1,4 +1,3 @@
-import { useState } from "react";
 import classes from "./FAQBlock.module.scss";
 import { Typography } from "ui/index";
 import { PlusIcon } from "assets/index";
@@ -6,16 +5,7 @@ import { useFAQBlockStore } from "./store/useFAQBlockStore";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 
 export const FAQBlock = () => {
-  const [selected, setSelected] = useState(null);
-
-  const { questions, loading } = useFAQBlockStore();
-
-  const toggle = (index) => {
-    if (selected === index) {
-      return setSelected(null);
-    }
-    setSelected(index);
-  };
+  const { questions } = useFAQBlockStore();
 
   return (
     <div className={classes.list}>
@@ -27,7 +17,6 @@ export const FAQBlock = () => {
           sx={{
             border: "none",
             outline: "none",
-            boxShadow: "none",
             mb: 3,
             boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.25)",
             borderRadius: "20px",
