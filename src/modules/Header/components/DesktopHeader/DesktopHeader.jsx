@@ -26,7 +26,9 @@ export const DesktopHeader = () => {
       </div>
       <nav className={classes.bottomHeader}>
         <div className={classes.logoBlock}>
-          <DatComLogo />
+          <Link to="/">
+            <DatComLogo />
+          </Link>
         </div>
         {navigationData.map((nav, key) => (
           <Link to={nav.path} key={key}>

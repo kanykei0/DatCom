@@ -1,11 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../Layout/Layout";
 import { PATHS } from "utils/constants/Constants";
-import { Home, NotFound, Reviews } from "pages/index";
-import { Form } from "pages/Form/Form";
-import { Students } from "pages/Students/Students";
-import { Universities } from "pages/Universities/Universities";
-import { DetailedUniversity } from "pages/Universities/components/DetailedUniversity/DetailedUniversity";
+import {
+  Countries,
+  CountryDetailed,
+  DetailedUniversity,
+  Form,
+  Home,
+  NotFound,
+  Reviews,
+  Students,
+  Universities,
+} from "pages/index";
 
 export const Router = createBrowserRouter([
   {
@@ -35,6 +41,14 @@ export const Router = createBrowserRouter([
       {
         path: PATHS.detailedUniversity,
         element: <DetailedUniversity />,
+      },
+      {
+        path: PATHS.countries,
+        element: <Countries />,
+      },
+      {
+        path: PATHS.detailedCountry,
+        element: <CountryDetailed />,
       },
       {
         path: PATHS.notFound,

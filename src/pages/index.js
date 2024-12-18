@@ -1,3 +1,9 @@
 export { Home } from "./Home/Home";
 export { NotFound } from "./NotFound/NotFound";
 export { Reviews } from "./Reviews/Reviews";
+export { Countries } from "./Countries/Countries";
+export { CountryDetailed } from "./CountryDetailed/CountryDetailed";
+export { Form } from "./Form/Form";
+export { Students } from "./Students/Students";
+export { Universities } from "./Universities/Universities";
+export { DetailedUniversity } from "./Universities/components/DetailedUniversity/DetailedUniversity";

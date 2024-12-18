@@ -11,7 +11,7 @@ export const useDetailedUniversityStore = (id) => {
 
     const fetchUniversity = async () => {
       try {
-        const response = await fetchData(`media/university/${id}/`);
+        const response = await fetchData(`media/university/`);
         setUniversity(response);
       } catch (error) {
         throw new Error(error);
@@ -20,7 +20,7 @@ export const useDetailedUniversityStore = (id) => {
 
     const fetchStudents = async () => {
       try {
-        const response = await fetchData(`media/university/students/${id}`);
+        const response = await fetchData(`media/country/${id}`);
         setStudents(response.results);
       } catch (error) {
         throw new Error(error);
