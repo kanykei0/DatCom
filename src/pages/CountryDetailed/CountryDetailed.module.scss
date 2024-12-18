@@ -32,3 +32,17 @@
   margin-top: 56px;
   margin-bottom: 120px;
 }
+
+.gallery {
+  margin-bottom: 120px;
+
+  &_block {
+    img {
+      border-radius: 14px;
+    }
+  }
+}
+
+.universityList {
+  margin-bottom: 120px;
+}
