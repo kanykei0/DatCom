@@ -20,21 +20,35 @@
   }
 
   .infoBlock {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
     .countryDesc {
       margin: 16px 0;
       max-width: 289px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 7;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: calc(7 * 1.4em);
+      line-height: 1.4em;
     }
+    .btnContainer {
+      margin-top: auto;
 
-    .countryBtn {
-      margin: 12px 0;
-      transition: 0.3s;
-
-      &:hover {
-        color: var(--color-primary);
+      .countryBtn {
+        margin: 12px 0;
         transition: 0.3s;
 
-        svg path {
-          stroke: var(--color-primary);
+        &:hover {
+          color: var(--color-primary);
+          transition: 0.3s;
+
+          svg path {
+            stroke: var(--color-primary);
+          }
         }
       }
     }
@@ -65,6 +79,7 @@
       text-overflow: ellipsis;
 
       max-height: calc(3 * 1.5em);
+
       line-height: 1.5em;
     }
 
