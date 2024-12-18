@@ -48,8 +48,10 @@ export const Home = () => {
             />
           )}
         />
-        <Typography variant="heading">Услуги</Typography>
-        <Services />
+        <div id="services">
+          <Typography variant="heading">Услуги</Typography>
+          <Services />
+        </div>
         <Typography variant="heading">поступившие студенты</Typography>
         <Slider
           amount={2.8}

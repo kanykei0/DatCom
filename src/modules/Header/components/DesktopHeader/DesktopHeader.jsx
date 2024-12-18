@@ -9,6 +9,12 @@ import { useTranslation } from "react-i18next";
 export const DesktopHeader = () => {
   const { t } = useTranslation();
 
+  const scrollToElement = () => {
+    const element = document.getElementById("services");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <div className={classes.header}>
       <div className={classes.topHeader}>
@@ -31,7 +37,7 @@ export const DesktopHeader = () => {
           </Link>
         </div>
         {navigationData.map((nav, key) => (
-          <Link to={nav.path} key={key}>
+          <Link to={nav.path} key={key} onClick={scrollToElement}>
             <Typography weight="regular">{nav.nav}</Typography>
           </Link>
         ))}
