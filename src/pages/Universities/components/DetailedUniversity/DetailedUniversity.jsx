@@ -10,7 +10,8 @@ import { useMediaQuery } from "utils/helpers/useMedia";
 export const DetailedUniversity = () => {
   const { id } = useParams();
   const { university, students } = useDetailedUniversityStore(id);
-  const isMobile = useMediaQuery("(max-width: 900px)");
+  const isTablet = useMediaQuery("(max-width: 900px)");
+  const isMobile = useMediaQuery("(max-width: 400px)");
 
   const [open, setOpen] = useState(false);
   const [student, setStudent] = useState({});
@@ -61,7 +62,7 @@ export const DetailedUniversity = () => {
 
           <div className={classes.studentsSlider}>
             <Slider
-              amount={isMobile ? 2 : 2.8}
+              amount={isMobile ? 1 : isTablet ? 2 : 2.8}
               sliderList={students}
               renderSlide={(item) => (
                 <CustomCard

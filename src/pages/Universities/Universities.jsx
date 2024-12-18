@@ -45,7 +45,7 @@ export const Universities = () => {
             onChange={handleInputChange}
             sx={{
               textAlign: "start",
-              width: "420px",
+              width: { xs: "100%", sm: "420px" },
               "& .MuiOutlinedInput-root": {
                 height: "45px",
                 borderRadius: "8px",
@@ -84,7 +84,7 @@ export const Universities = () => {
             value={state.country}
             onChange={handleInputChange}
             sx={{
-              width: "120px",
+              width: { xs: "45%", sm: "120px" },
               "& .MuiOutlinedInput-root": {
                 height: "45px",
                 borderRadius: "8px",
@@ -118,7 +118,7 @@ export const Universities = () => {
             value={state.programm}
             onChange={handleInputChange}
             sx={{
-              width: "230px",
+              width: { xs: "45%", sm: "230px" },
               "& .MuiOutlinedInput-root": {
                 height: "45px",
                 borderRadius: "8px",

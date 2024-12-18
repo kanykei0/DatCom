@@ -6,11 +6,14 @@ import { useReviewsBlockStore } from "./store/useReviewsBlockStore";
 import { useMediaQuery } from "utils/helpers/useMedia";
 
 export const ReviewsBlock = () => {
-  const isMobile = useMediaQuery("(max-width: 900px)");
+  const isTablet = useMediaQuery("(max-width: 900px)");
+  const isMobile = useMediaQuery("(max-width: 400px)");
+
+  const limit = isMobile ? 1 : isTablet ? 2 : 3;
 
   const { reviews, loading } = useReviewsBlockStore({
     offset: 0,
-    limit: isMobile ? 2 : 3,
+    limit,
   });
 
   return (
