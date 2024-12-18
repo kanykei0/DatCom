@@ -5,11 +5,11 @@ import classes from "./Layout.module.scss";
 export const Layout = () => {
   return (
     <div className={classes.block}>
-      <Header />
+      {/* <Header /> */}
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

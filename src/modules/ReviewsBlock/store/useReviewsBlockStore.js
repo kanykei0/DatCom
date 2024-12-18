@@ -18,7 +18,7 @@ export const useReviewsBlockStore = ({ offset = 0, limit = 3 }) => {
     };
 
     fetchReviews();
-  }, [offset, fetchData]);
+  }, [offset, limit, fetchData]);
 
   return {
     reviews,
