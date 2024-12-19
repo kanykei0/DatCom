@@ -36,7 +36,6 @@ export const DesktopHeader = () => {
     } else {
       scrollToTop();
     }
-    console.log(location.pathname);
   }, [location.pathname]);
 
   return (

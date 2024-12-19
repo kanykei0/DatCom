@@ -11,7 +11,6 @@ export const useFormStore = () => {
       try {
         const response = await fetchData(`media/country/`);
         setCountryList(response.results);
-        console.log(response.results);
       } catch (error) {
         throw new Error(error);
       }

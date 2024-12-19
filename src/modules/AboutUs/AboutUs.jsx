@@ -1,29 +1,39 @@
-import { DatComLogo } from "assets/index";
 import classes from "./AboutUs.module.scss";
 import { Typography } from "ui/index";
+import { useAboutUsStore } from "./store/useAboutUsStore";
+import { useEffect, useState } from "react";
 
 export const AboutUs = () => {
+  const { data, loading } = useAboutUsStore();
+  const [aboutUs, setAboutUs] = useState();
+
+  useEffect(() => {
+    if (!loading) {
+      setAboutUs(data);
+    }
+  }, [data, loading]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!aboutUs || aboutUs.length === 0) {
+    return <div>No data available</div>;
+  }
+
   return (
     <div className={classes.block}>
       <div className={classes.block_left}>
         <div className={classes.logo}>
-          <DatComLogo />
+          <img src={aboutUs[0].image} alt={aboutUs[0].title} />
         </div>
       </div>
       <div className={classes.block_right}>
         <Typography upp="upp" weight="bold" variant="h2">
-          О Datcom
+          {aboutUs[0].title}
         </Typography>
         <Typography className={classes.desc}>
-          Мы сами учились за границей и знаем, как бывает сложно и страшно на
-          этом пути. Чтобы поддержать таких же талантливых и амбициозных
-          студентов, мы создали международное образовательное агентство DatСom
-        </Typography>
-        <Typography>
-          Каждый год сотни людей реализуют мечту об обучении за границей с нашей
-          помощью.Каждый год сотни людей реализуют мечту об обучении за границей
-          с нашей помощью.Каждый год сотни людей реализуют мечту об обучении за
-          границей с нашей помощью.
+          {aboutUs[0].description}
         </Typography>
       </div>
     </div>

@@ -9,8 +9,6 @@ export const CountryDetailed = () => {
   const { id } = useParams();
   const { country } = useCountryDetailedStore(id);
 
-  console.log(country);
-
   return (
     <>
       <div className={classes.block}>

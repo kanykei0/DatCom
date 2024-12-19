@@ -3,12 +3,50 @@ import classes from "./Hero.module.scss";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { PATHS } from "utils/constants/Constants";
+import { useEffect, useState } from "react";
+import { useApiStore } from "utils/requester/requester";
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { fetchData } = useApiStore();
+
+  useEffect(() => {
+    const fetchMainPage = async () => {
+      setLoading(true);
+      setData(null);
+      try {
+        const response = await fetchData(`/main-info/main-page/`);
+        setData(response);
+      } catch (error) {
+        throw new Error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMainPage();
+  }, [fetchData]);
+
+  console.log(data);
+  if (loading) {
+    return <div>loading...</div>;
+  }
+
+  const backgroundImage = data[0]?.image;
 
   return (
-    <div className={classes.hero}>
+    <div
+      className={classes.hero}
+      style={{
+        background: `linear-gradient(
+          0deg,
+          rgba(38, 38, 38, 0.4) 0%,
+          rgba(38, 38, 38, 0.4) 100%
+        ), url(${backgroundImage}) center/cover no-repeat`,
+      }}
+    >
       <Container>
         <div className={classes.textBlock}>
           <Typography
@@ -17,10 +55,10 @@ export const Hero = () => {
             variant="h1"
             className={classes.title}
           >
-            обучение за рубежом
+            {data[0].title}
           </Typography>
           <Typography className={classes.desc} variant="h4" color="white">
-            Помощь студентам в достижении их образовательных целей за рубежом
+            {data[0].description}
           </Typography>
           <Button size="medium">
             <Link to={PATHS.form}>
