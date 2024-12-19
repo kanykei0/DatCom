@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography, Container, ReviewCard } from "ui/index";
 import classes from "./Reviews.module.scss";
 import { StarIcon } from "assets/index";
@@ -6,16 +6,32 @@ import { useReviewsStore } from "./store/useReviewsStore";
 import { PaginationComponent } from "modules/PaginationComponent/PaginationComponent";
 import { Slider } from "modules/index";
 import ReactPlayer from "react-player";
+import { StarEmptyIcon } from "assets/icons/StarEmptyIcon";
+import { Loader } from "..";
 
 export const Reviews = () => {
   const [offset, setOffset] = useState(0);
+  const [ratingData, setRatingData] = useState({});
   const limit = 6;
 
-  const { reviews, count, video } = useReviewsStore(offset, limit);
+  const { reviews, count, video, rating, loading } = useReviewsStore(
+    offset,
+    limit
+  );
 
   const onChange = (_, page) => {
     setOffset((page - 1) * limit);
   };
+
+  useEffect(() => {
+    if (!loading) {
+      setRatingData(rating);
+    }
+  }, [rating, loading]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -27,15 +43,21 @@ export const Reviews = () => {
         </Typography>
         <div className={classes.reviewWrapper}>
           <div className={classes.starWrapper}>
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
+            {Array.from({ length: 5 }).map((_, index) =>
+              index < ratingData?.average ? (
+                <div key={index} className={classes.star}>
+                  <StarIcon />
+                </div>
+              ) : (
+                <div key={index} className={classes.star}>
+                  <StarEmptyIcon />
+                </div>
+              )
+            )}
           </div>
           <div className={classes.reviewData}>
-            <Typography weight="regular">4.9</Typography>
-            <Typography color="gray2">300 оценок</Typography>
+            <Typography weight="regular">{ratingData?.average}</Typography>
+            <Typography color="gray2">{reviews.length} оценок</Typography>
           </div>
         </div>
 
