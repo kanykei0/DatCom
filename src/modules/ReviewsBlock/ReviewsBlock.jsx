@@ -11,7 +11,7 @@ export const ReviewsBlock = () => {
 
   const limit = isMobile ? 1 : isTablet ? 2 : 3;
 
-  const { reviews, loading } = useReviewsBlockStore({
+  const { reviews } = useReviewsBlockStore({
     offset: 0,
     limit,
   });
