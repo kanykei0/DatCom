@@ -2,7 +2,6 @@ import { StarEmptyIcon } from "assets/icons/StarEmptyIcon";
 import { Typography } from "..";
 import classes from "./ReviewCard.module.scss";
 import { StarIcon } from "assets/index";
-import studentImage from "assets/images/student1.jpeg";
 
 export const ReviewCard = ({ data, short }) => {
   const totalStars = 5;

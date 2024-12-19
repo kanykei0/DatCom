@@ -14,10 +14,9 @@ import { Container, CustomCard, Typography } from "ui/index";
 import { CountryArr } from "utils/constants/Constants";
 
 export const Home = () => {
-  const [offset, setOffset] = useState(0);
   const limit = 6;
 
-  const { students, count } = useStudentsStore(offset, limit);
+  const { students } = useStudentsStore(0, limit);
 
   const [open, setOpen] = useState(false);
   const [student, setStudent] = useState({});

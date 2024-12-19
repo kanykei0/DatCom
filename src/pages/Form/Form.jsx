@@ -2,14 +2,11 @@ import { useState } from "react";
 import { Typography, Container, Button } from "ui/index";
 import classes from "./Form.module.scss";
 import formImage from "../../assets/images/formImage.png";
-import {
-  optionsCountry,
-  optionsSpeciality,
-  optionsStudy,
-} from "utils/constants/Constants";
+import { optionsSpeciality, optionsStudy } from "utils/constants/Constants";
 import { TextField, MenuItem } from "@mui/material";
 import { IMaskInput } from "react-imask";
 import { useFormStore } from "./store/useFormStore";
+import { useMediaQuery } from "utils/helpers/useMedia";
 
 export const Form = () => {
   const [state, setState] = useState({
@@ -20,8 +17,9 @@ export const Form = () => {
     speciality: "",
   });
 
-  const { submitForm, countryList, success, resetSuccess, loading } =
-    useFormStore();
+  const isTablet = useMediaQuery("(max-width: 700px)");
+
+  const { submitForm, countryList } = useFormStore();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -160,7 +158,9 @@ export const Form = () => {
             </form>
           </div>
         </div>
-        <div className={classes.formBlock}>
+        <div
+          className={`${classes.formBlock} ${isTablet ? classes.hidden : ""}`}
+        >
           <img src={formImage} alt="FormImage" />
         </div>
       </div>

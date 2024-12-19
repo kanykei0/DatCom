@@ -52,6 +52,12 @@
     }
     .right {
       max-width: 399px;
+      display: flex;
+      flex-direction: column;
+
+      img {
+        border-radius: 20px;
+      }
 
       .btnBlock {
         margin-top: 16px;
