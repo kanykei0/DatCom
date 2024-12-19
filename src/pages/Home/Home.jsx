@@ -11,7 +11,7 @@ import {
 import { useStudentsStore } from "pages/Students/store/useStudentsStore";
 import { useState } from "react";
 import { Container, CustomCard, Typography } from "ui/index";
-import { CountryArr, StudentsArr } from "utils/constants/Constants";
+import { CountryArr } from "utils/constants/Constants";
 
 export const Home = () => {
   const [offset, setOffset] = useState(0);

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { PATHS } from "utils/constants/Constants";
 import { useEffect, useState } from "react";
 import { useApiStore } from "utils/requester/requester";
+import { Loader } from "pages/index";
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -31,7 +32,7 @@ export const Hero = () => {
 
   console.log(data);
   if (loading) {
-    return <div>loading...</div>;
+    return <Loader />;
   }
 
   const backgroundImage = data[0]?.image;

@@ -3,7 +3,7 @@ import { useApiStore } from "utils/requester/requester";
 
 export const useCountryDetailedStore = (id) => {
   const [country, setCountry] = useState({});
-  const { fetchData, loading } = useApiStore();
+  const { fetchData } = useApiStore();
 
   useEffect(() => {
     if (!id) return;
@@ -22,6 +22,5 @@ export const useCountryDetailedStore = (id) => {
 
   return {
     country,
-    loading,
   };
 };

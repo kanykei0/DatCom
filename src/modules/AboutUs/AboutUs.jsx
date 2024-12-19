@@ -2,6 +2,7 @@ import classes from "./AboutUs.module.scss";
 import { Typography } from "ui/index";
 import { useAboutUsStore } from "./store/useAboutUsStore";
 import { useEffect, useState } from "react";
+import { Loader } from "pages/index";
 
 export const AboutUs = () => {
   const { data, loading } = useAboutUsStore();
@@ -14,7 +15,7 @@ export const AboutUs = () => {
   }, [data, loading]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (!aboutUs || aboutUs.length === 0) {
