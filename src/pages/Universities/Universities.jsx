@@ -29,7 +29,6 @@ export const Universities = () => {
       ...prevState,
       [name]: value,
     }));
-    console.log(state);
   };
 
   return (
