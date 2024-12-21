@@ -20,7 +20,7 @@ export const useFormStore = () => {
 
     const fetchStudies = async () => {
       try {
-        const response = await fetchData(`media/program/`);
+        const response = await fetchData(`services/degree/`);
         setStudyList(response.results);
       } catch (error) {
         throw new Error(error);
@@ -29,7 +29,7 @@ export const useFormStore = () => {
 
     const fetchSpecialities = async () => {
       try {
-        const response = await fetchData(`media/country/`);
+        const response = await fetchData(`media/program/`);
         setSpecialityList(response.results);
       } catch (error) {
         throw new Error(error);
