@@ -41,7 +41,7 @@ export const useReviewsStore = (offset = 0, limit = 6) => {
     fetchAverageRating();
     fetchVideoData();
     fetchReiewsData();
-  }, [offset, fetchData]);
+  }, [offset, fetchData, limit]);
 
   return {
     rating,

@@ -6,7 +6,7 @@ import { Container, Typography } from "ui/index";
 import classes from "./Stepper.module.scss";
 import { styled } from "@mui/material/styles";
 
-const CustomStepLabel = styled(StepLabel)(({ theme }) => ({
+const CustomStepLabel = styled(StepLabel)(() => ({
   marginTop: "-12px",
 
   ".MuiStepLabel-iconContainer": {
@@ -36,7 +36,7 @@ const CustomStepLabel = styled(StepLabel)(({ theme }) => ({
   },
 }));
 
-const CustomStepContent = styled(StepContent)(({ theme }) => ({
+const CustomStepContent = styled(StepContent)(() => ({
   marginTop: "-45px",
 }));
 

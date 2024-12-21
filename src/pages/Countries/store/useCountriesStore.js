@@ -19,7 +19,7 @@ export const useCountriesStore = (offset = 0, limit = 9) => {
       }
     };
     fetchCountriesData();
-  }, [offset, fetchData]);
+  }, [offset, fetchData, limit]);
 
   return {
     countries,

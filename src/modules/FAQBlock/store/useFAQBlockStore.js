@@ -18,7 +18,7 @@ export const useFAQBlockStore = (offset = 0, limit = 4) => {
     };
 
     fetchQuestions();
-  }, [offset, fetchData]);
+  }, [offset, fetchData, limit]);
 
   return {
     questions,

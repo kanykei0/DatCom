@@ -5,6 +5,8 @@ export const useFormStore = () => {
   const { fetchData, postRequest, success, resetSuccess, loading } =
     useApiStore();
   const [countryList, setCountryList] = useState([]);
+  const [studyList, setStudyList] = useState([]);
+  const [specialityList, setSpecialityList] = useState([]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -16,7 +18,27 @@ export const useFormStore = () => {
       }
     };
 
+    const fetchStudies = async () => {
+      try {
+        const response = await fetchData(`media/program/`);
+        setStudyList(response.results);
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
+    const fetchSpecialities = async () => {
+      try {
+        const response = await fetchData(`media/country/`);
+        setSpecialityList(response.results);
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+
     fetchCountries();
+    fetchStudies();
+    fetchSpecialities();
   }, [fetchData]);
 
   const submitForm = async (formData) => {
@@ -36,6 +58,8 @@ export const useFormStore = () => {
   return {
     submitForm,
     countryList,
+    studyList,
+    specialityList,
     success,
     resetSuccess,
     loading,
