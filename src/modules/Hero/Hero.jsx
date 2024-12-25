@@ -33,6 +33,8 @@ export const Hero = () => {
   console.log(data);
   if (loading) {
     return <Loader />;
+  } else if (data.length === 0) {
+    return <div>empty</div>;
   }
 
   const backgroundImage = data[0]?.image;
