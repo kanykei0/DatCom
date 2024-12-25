@@ -5,7 +5,6 @@ import { useStudentsStore } from "./store/useStudentsStore";
 import { PaginationComponent } from "modules/PaginationComponent/PaginationComponent";
 import { ModalComponent } from "modules/index";
 
-
 export const Students = () => {
   const [offset, setOffset] = useState(0);
   const limit = 9;

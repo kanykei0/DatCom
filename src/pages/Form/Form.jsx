@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Typography, Container, Button } from "ui/index";
 import classes from "./Form.module.scss";
 import formImage from "../../assets/images/formImage.png";
-import { optionsSpeciality, optionsStudy } from "utils/constants/Constants";
 import { TextField, MenuItem } from "@mui/material";
 import { IMaskInput } from "react-imask";
 import { useFormStore } from "./store/useFormStore";
@@ -19,7 +18,7 @@ export const Form = () => {
 
   const isTablet = useMediaQuery("(max-width: 700px)");
 
-  const { submitForm, countryList } = useFormStore();
+  const { submitForm, countryList, studyList, specialityList } = useFormStore();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -32,6 +31,7 @@ export const Form = () => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    console.log(state);
 
     submitForm(state);
   };
@@ -128,9 +128,9 @@ export const Form = () => {
                 sx={sharedTextFieldStyles}
                 onChange={handleInputChange}
               >
-                {optionsStudy.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                {studyList.map((option) => (
+                  <MenuItem key={option.id} value={option.title}>
+                    {option.title}
                   </MenuItem>
                 ))}
               </TextField>
@@ -145,9 +145,9 @@ export const Form = () => {
                 sx={sharedTextFieldStyles}
                 onChange={handleInputChange}
               >
-                {optionsSpeciality.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                {specialityList.map((option) => (
+                  <MenuItem key={option.id} value={option.title}>
+                    {option.title}
                   </MenuItem>
                 ))}
               </TextField>

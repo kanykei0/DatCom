@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import { useApiStore } from "utils/requester/requester";
 
-export const useUniversitiesStore = (
-  offset = 0,
-  limit = 12,
-  search,
-  country
-) => {
+export const useUniversitiesStore = (offset = 0, limit = 12, search) => {
   const [universities, setUniversities] = useState([]);
   const [countryList, setCountryList] = useState([]);
   const [programmList, setProgrammList] = useState([]);
@@ -61,7 +56,7 @@ export const useUniversitiesStore = (
     fetchCountries();
 
     fetchProgramms();
-  }, [offset, search, fetchData]);
+  }, [offset, search, fetchData, limit]);
 
   return {
     universities,
