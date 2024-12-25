@@ -15,3 +15,4 @@ export { PlusIcon } from "./icons/PlusIcon";
 export { StarIcon } from "./icons/StarIcon";
 export { CloseIcon } from "./icons/CloseIcon";
 export { Search } from "./icons/Search";
+export { GreenIcon } from "./icons/GreenIcon";

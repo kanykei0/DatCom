@@ -2,38 +2,86 @@ import { useState } from "react";
 import { Typography, Container, Button } from "ui/index";
 import classes from "./Form.module.scss";
 import formImage from "../../assets/images/formImage.png";
-import { TextField, MenuItem } from "@mui/material";
+import { TextField, MenuItem, Modal, Box } from "@mui/material";
 import { IMaskInput } from "react-imask";
 import { useFormStore } from "./store/useFormStore";
 import { useMediaQuery } from "utils/helpers/useMedia";
+import { GreenIcon } from "assets/index";
+import { Link } from "react-router-dom";
+
+const initialState = {
+  name: "",
+  number: "",
+  country: "",
+  study: "",
+  speciality: "",
+};
+
+const initialErrors = {
+  name: "",
+  number: "",
+  country: "",
+  study: "",
+  speciality: "",
+};
 
 export const Form = () => {
-  const [state, setState] = useState({
-    name: "",
-    number: "",
-    country: "",
-    study: "",
-    speciality: "",
-  });
+  const [state, setState] = useState(initialState);
+  const [errors, setErrors] = useState(initialErrors);
+  const [open, setOpen] = useState(false);
 
   const isTablet = useMediaQuery("(max-width: 700px)");
-
   const { submitForm, countryList, studyList, specialityList } = useFormStore();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setState((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "", // Очистка ошибок при изменении
+    }));
   };
 
-  const onFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
+  const validateField = (name, value) => {
+    switch (name) {
+      case "name":
+        return value.trim() ? "" : "Введите ФИО.";
+      case "number":
+      case "country":
+      case "study":
+      case "speciality":
+        return value ? "" : "Поле обязательно для заполнения.";
+      default:
+        return "";
+    }
+  };
 
-    submitForm(state);
+  const validateForm = () => {
+    const newErrors = Object.keys(state).reduce((acc, field) => {
+      const error = validateField(field, state[field]);
+      if (error) acc[field] = error;
+      return acc;
+    }, {});
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Если ошибок нет, форма валидна
+  };
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log(studyList);
+    if (!validateForm()) return;
+
+    try {
+      await submitForm(state);
+      setOpen(true);
+      setState(initialState);
+    } catch (error) {
+      console.error("Ошибка при отправке формы:", error);
+    }
   };
 
   const sharedTextFieldStyles = {
@@ -75,6 +123,8 @@ export const Form = () => {
                 variant="outlined"
                 value={state.name}
                 onChange={handleInputChange}
+                error={!!errors.name}
+                helperText={errors.name}
                 sx={sharedTextFieldStyles}
               />
 
@@ -93,11 +143,17 @@ export const Form = () => {
                           ...prevState,
                           number: value,
                         }));
+                        setErrors((prevErrors) => ({
+                          ...prevErrors,
+                          number: "", // Очистка ошибки при вводе
+                        }));
                       },
                       unmask: true,
                     },
                   },
                 }}
+                error={!!errors.number}
+                helperText={errors.number}
                 sx={sharedTextFieldStyles}
               />
 
@@ -107,9 +163,10 @@ export const Form = () => {
                 select
                 label="Страна"
                 value={state.country}
-                defaultValue={""}
-                sx={sharedTextFieldStyles}
                 onChange={handleInputChange}
+                error={!!errors.country}
+                helperText={errors.country}
+                sx={sharedTextFieldStyles}
               >
                 {countryList.map((option) => (
                   <MenuItem key={option.id} value={option.id}>
@@ -124,12 +181,13 @@ export const Form = () => {
                 select
                 label="Направление обучения"
                 value={state.study}
-                defaultValue={""}
-                sx={sharedTextFieldStyles}
                 onChange={handleInputChange}
+                error={!!errors.study}
+                helperText={errors.study}
+                sx={sharedTextFieldStyles}
               >
                 {studyList.map((option) => (
-                  <MenuItem key={option.id} value={option.title}>
+                  <MenuItem key={option.id} value={option.id}>
                     {option.title}
                   </MenuItem>
                 ))}
@@ -141,12 +199,13 @@ export const Form = () => {
                 select
                 label="Желаемая специальность"
                 value={state.speciality}
-                defaultValue={""}
-                sx={sharedTextFieldStyles}
                 onChange={handleInputChange}
+                error={!!errors.speciality}
+                helperText={errors.speciality}
+                sx={sharedTextFieldStyles}
               >
                 {specialityList.map((option) => (
-                  <MenuItem key={option.id} value={option.title}>
+                  <MenuItem key={option.id} value={option.id}>
                     {option.title}
                   </MenuItem>
                 ))}
@@ -164,6 +223,42 @@ export const Form = () => {
           <img src={formImage} alt="FormImage" />
         </div>
       </div>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "30%",
+            minWidth: "300px",
+            borderRadius: "20px",
+            background: "var(--color-white)",
+            border: "none",
+            outline: "none",
+            p: 5,
+            textAlign: "center",
+          }}
+        >
+          <Box component="div">
+            <GreenIcon />
+            <Typography
+              variant="h5"
+              weight="semiBold"
+              className={classes.modalTitle}
+            >
+              Ваша заявка успешно отправлена
+            </Typography>
+            <Button className={classes.modalBtn}>
+              <Link to={"/"}>
+                <Typography variant="h5" weight="semiBold">
+                  На главную
+                </Typography>
+              </Link>
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </Container>
   );
 };
