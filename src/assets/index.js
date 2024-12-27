@@ -17,3 +17,5 @@ export { CloseIcon } from "./icons/CloseIcon";
 export { Search } from "./icons/Search";
 export { GreenIcon } from "./icons/GreenIcon";
 export { BurgerMenuIcon } from "./icons/BurgerMenuIcon";
+export { ArrowRight } from "./icons/ArrowRight";
+export { ArrowLeft } from "./icons/ArrowLeft";

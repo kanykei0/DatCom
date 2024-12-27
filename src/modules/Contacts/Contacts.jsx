@@ -2,20 +2,35 @@ import classes from "./Contacts.module.scss";
 import { Typography } from "ui/index";
 import { useContactsStore } from "./store/useContactsStore";
 import {
+  ArrowLeft,
+  ArrowRight,
   ClockIcon,
   InstagramIcon,
   LocationIcon,
   PhoneIcon,
   TelegramIcon,
 } from "assets/index";
+import { useMediaQuery } from "utils/helpers/useMedia";
+import { useState } from "react";
 
 export const Contacts = () => {
   const { contacts } = useContactsStore();
   const { shift, address, phoneNumber, instagram, telegram } = contacts || {};
+  const isTablet = useMediaQuery("(max-width: 900px)");
+
+  const [state, setState] = useState(false);
+
+  const openContacts = () => {
+    setState(!state);
+  };
 
   return (
     <div className={classes.block}>
-      <div className={classes.block_left}>
+      <div
+        className={`${classes.block_left} ${
+          state ? classes.block_left_active : ""
+        }`}
+      >
         <div className={classes.block_left_info}>
           <div className={`${classes.iconBlock} ${classes.changeIcon} `}>
             <ClockIcon />
@@ -90,6 +105,16 @@ export const Contacts = () => {
           </div>
         </div>
       </div>
+      {isTablet && (
+        <div
+          className={`${classes.miniBlock} ${
+            state ? classes.miniBlock_active : ""
+          }`}
+          onClick={openContacts}
+        >
+          {!state ? <ArrowRight /> : <ArrowLeft />}
+        </div>
+      )}
       <div className={classes.block_right}>
         <iframe
           className={classes.map}
