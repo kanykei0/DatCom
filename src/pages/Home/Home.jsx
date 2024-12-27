@@ -37,6 +37,7 @@ export const Home = () => {
         <AboutUs />
         <Typography variant="heading">страны</Typography>
         <Slider
+          maxCards={2.2}
           sliderList={CountryArr}
           renderSlide={(item) => (
             <CustomCard
@@ -53,7 +54,6 @@ export const Home = () => {
         </div>
         <Typography variant="heading">поступившие студенты</Typography>
         <Slider
-          amount={2.8}
           sliderList={students}
           renderSlide={(item) => (
             <CustomCard
