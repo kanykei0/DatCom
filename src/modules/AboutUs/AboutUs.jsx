@@ -19,7 +19,7 @@ export const AboutUs = () => {
   }
 
   if (!aboutUs || aboutUs.length === 0) {
-    return <div>No data available</div>;
+    return <div></div>;
   }
 
   return (

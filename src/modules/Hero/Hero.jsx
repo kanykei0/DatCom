@@ -6,6 +6,7 @@ import { PATHS } from "utils/constants/Constants";
 import { useEffect, useState } from "react";
 import { useApiStore } from "utils/requester/requester";
 import { Loader } from "pages/index";
+import imageEmpty from "assets/images/empty.jpg";
 
 export const Hero = () => {
   const { t } = useTranslation();
@@ -30,14 +31,11 @@ export const Hero = () => {
     fetchMainPage();
   }, [fetchData]);
 
-  console.log(data);
   if (loading) {
     return <Loader />;
-  } else if (data.length === 0) {
-    return <div>empty</div>;
   }
 
-  const backgroundImage = data[0]?.image;
+  const backgroundImage = data.length > 0 ? data[0]?.image : imageEmpty;
 
   return (
     <div
@@ -58,10 +56,10 @@ export const Hero = () => {
             variant="h1"
             className={classes.title}
           >
-            {data[0].title}
+            {data.length > 0 && data[0].title}
           </Typography>
           <Typography className={classes.desc} variant="h4" color="white">
-            {data[0].description}
+            {data.length > 0 && data[0].description}
           </Typography>
           <Button size="medium">
             <Link to={PATHS.form}>

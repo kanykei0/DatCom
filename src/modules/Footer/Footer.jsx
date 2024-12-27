@@ -59,7 +59,9 @@ export const Footer = () => {
               ))}
             </div>
           </div>
-          <SocialMedia />
+          <div className={classes.social}>
+            <SocialMedia />
+          </div>
         </div>
       </Container>
       <div className={classes.line} />

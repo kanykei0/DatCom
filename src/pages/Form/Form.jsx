@@ -72,7 +72,6 @@ export const Form = () => {
   const onFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(studyList);
     if (!validateForm()) return;
 
     try {
